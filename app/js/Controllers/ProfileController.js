@@ -5,10 +5,10 @@
         .module('app')
         .controller('ProfileController', ProfileController);
 
-    ProfileController.$inject = ['APIServices'];
+    ProfileController.$inject = ['UserAPIServices'];
 
     /* @ngInject */
-    function ProfileController(APIServices) {
+    function ProfileController(UserAPIServices) {
         var vm = this;
         vm.title = 'ProfileController';
         vm.search = search;
@@ -21,14 +21,11 @@
           // 
         }
         function search (username) {
-          // vm.username = username;
-          console.log(username);
-          return APIServices.connectAPI(username)
-            .then(function(data) {
-              vm.profiles = data;
-              return vm.profiles;
-            });
-          
+            return UserAPIServices.searchUser(username)
+                .then(function(data) {
+                    vm.user = data;
+                    return vm.user;
+                });
         }
     }
 })();

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/app.css">
     <!-- endinject -->
 </head>
-<body ng-app="app">
+<body ng-app="app" ng-cloak>
     <div ng-controller="ProfileController as vm">
 
         <form novalidate="">
@@ -15,14 +15,20 @@
             <input type="submit" ng-click="vm.search(vm.username)">
         </form>
     </div>
+    <div ng-controller="PhotosController as vm">
+    
+        <img src="{{ vm.photos.photos[0].image_url }}" alt="">
+    </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular.min.js"></script>
     <!-- inject:js -->
     <script src="env.js"></script>
     <script src="js/app.module.js"></script>
     <script src="js/constants.js"></script>
-    <script src="js/500px/APIServices.js"></script>
-    <script src="js/500px/ProfileController.js"></script>
+    <script src="js/500px/PhotosAPIServices.js"></script>
+    <script src="js/500px/UserAPIServices.js"></script>
+    <script src="js/Controllers/PhotosController.js"></script>
+    <script src="js/Controllers/ProfileController.js"></script>
     <!-- endinject -->
 </body>
 </html>
