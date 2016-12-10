@@ -28,7 +28,7 @@
               return response.data;
           }
           function getProfileFailed (error) {
-              // $log.error('Failed to get data' + error.data);
+              $log.info(error.status);
           }
         }
     }

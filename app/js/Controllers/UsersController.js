@@ -3,12 +3,12 @@
 
     angular
         .module('app')
-        .controller('ProfileController', ProfileController);
+        .controller('UsersController', UsersController);
 
-    ProfileController.$inject = ['UserAPIServices'];
+    UsersController.$inject = ['UserAPIServices'];
 
     /* @ngInject */
-    function ProfileController(UserAPIServices) {
+    function UsersController(UserAPIServices) {
         var vm    = this;
         vm.search = search;
 
