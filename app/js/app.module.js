@@ -1,6 +1,10 @@
-(function() {
+(function () {
     'use strict';
 
     angular
-        .module('app', []);
+        .module('app', [
+            'ngMaterial',
+            'ngAnimate',
+            'angular-loading-bar'
+        ]);
 })();

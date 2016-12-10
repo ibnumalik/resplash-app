@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>500px Viewer</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="vendor/angular-material.css"/>
+    <!-- endbower -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/app.css">
+    <!-- endinject -->
+</head>
+<body ng-app="app" ng-cloak>
+    <div ng-controller="ProfileController as vm">
+
+        <form novalidate="">
+            <input type="text" ng-model="vm.username" required="">
+            <input type="submit" ng-click="vm.search(vm.username)">
+        </form>
+    </div>
+    <div ng-controller="PhotosController as vm">
+        <ul>
+            <li ng-repeat="photo in vm.photos">
+                <img src="{{ photo.image_url }}">
+            </li>
+        </ul>
+    </div>
+
+    <!-- bower:js -->
+    <script src="vendor/angular.js"></script>
+    <script src="vendor/angular-animate.js"></script>
+    <script src="vendor/angular-aria.js"></script>
+    <script src="vendor/angular-messages.js"></script>
+    <script src="vendor/angular-material.js"></script>
+    <!-- endbower -->
+    <!-- inject:js -->
+    <script src="env.js"></script>
+    <script src="js/app.module.js"></script>
+    <script src="js/constants.js"></script>
+    <script src="js/500px/PhotosAPIServices.js"></script>
+    <script src="js/500px/UserAPIServices.js"></script>
+    <script src="js/Controllers/PhotosController.js"></script>
+    <script src="js/Controllers/ProfileController.js"></script>
+    <!-- endinject -->
+</body>
+</html>

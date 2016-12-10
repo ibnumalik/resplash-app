@@ -10,8 +10,8 @@
     /* @ngInject */
     function UserAPIServices($http, $log, __env) {
 
-        var API     = __env.APIKEY;
-        var baseUrl = 'https://api.500px.com/v1';
+        var API= __env.APIKEY;
+        var baseUrl  = 'https://api.500px.com/v1';
         var services = {
             searchUser: searchUser
         };

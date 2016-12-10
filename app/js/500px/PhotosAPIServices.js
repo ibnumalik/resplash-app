@@ -19,7 +19,7 @@
 
         function getPhotos() {
             return $http.get(baseUrl + 
-                '/photos?consumer_key=' + __env.APIKEY + '&feature=fresh_today')
+                '/photos?consumer_key=' + __env.APIKEY + '&feature=popular&only=Landscapes&image_size=440')
                 .then(getPhotosComplete)
                 .catch(getPhotosFailed);
 

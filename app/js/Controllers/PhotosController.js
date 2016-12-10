@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -19,13 +19,12 @@
         function activate() {
             return showPhoto();
         }
-        function showPhoto(argument) {
+        function showPhoto() {
             return PhotosAPIServices.getPhotos()
-                .then(function(data) {
-                    vm.photos = data;
+                .then(function(response) {
+                    vm.photos = response.photos;
                     return vm.photos;
                 });
-            
         }
     }
 })();

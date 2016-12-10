@@ -3,24 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>500px Viewer</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- bower:css -->
+    <link rel="stylesheet" href="vendor/angular-material.css"/>
+    <link rel="stylesheet" href="vendor/loading-bar.css"/>
+    <!-- endbower -->
     <!-- inject:css -->
     <link rel="stylesheet" href="css/app.css">
     <!-- endinject -->
 </head>
 <body ng-app="app" ng-cloak>
-    <div ng-controller="ProfileController as vm">
+    <div class="headline" layout="row" layout-align="center center" ng-controller="ProfileController as vm">
+        <div layout="column" layout-align="center center">
+            <h1 class="md-display-3">500px Viewer</h1>
+            <form ng-submit="vm.search(vm.username)" layout="row" novalidate="">
+                <div class="search-box">
+                    <md-icon class="search-icon" md-font-set="material-icons"> search </md-icon>
+                    <input name="seach" type="text" ng-model="vm.username" required="" autofocus placeholder="Search Username">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div layout="row" layout-align="center center" layout-margin layout-padding>
+        <div flex="80" flex-lg="90" ng-controller="PhotosController as vm">
+            <md-grid-list md-cols="3" md-cols-xs="1" md-cols-sm="2" md-cols-md="2" md-cols-lg="3" md-row-height="1:1" md-gutter="10px">
+                <md-grid-tile class="grid-image" ng-repeat="photo in vm.photos" ng-style="{'background-image': 'url(' + photo.images[0].url + ')'}">
+                    <md-grid-tile-footer>
+                        <h4>{{ photo.name }}</h4>
+                    </md-grid-tile-footer>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+    </div>
 
-        <form novalidate="">
-            <input type="text" ng-model="vm.username" required="">
-            <input type="submit" ng-click="vm.search(vm.username)">
-        </form>
-    </div>
-    <div ng-controller="PhotosController as vm">
-    
-        <img src="{{ vm.photos.photos[0].image_url }}" alt="">
-    </div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular.min.js"></script>
+    <!-- bower:js -->
+    <script src="vendor/angular.js"></script>
+    <script src="vendor/angular-animate.js"></script>
+    <script src="vendor/angular-aria.js"></script>
+    <script src="vendor/angular-messages.js"></script>
+    <script src="vendor/angular-material.js"></script>
+    <script src="vendor/loading-bar.js"></script>
+    <!-- endbower -->
     <!-- inject:js -->
     <script src="env.js"></script>
     <script src="js/app.module.js"></script>
@@ -29,6 +53,7 @@
     <script src="js/500px/UserAPIServices.js"></script>
     <script src="js/Controllers/PhotosController.js"></script>
     <script src="js/Controllers/ProfileController.js"></script>
+    <script src="js/directives/autofocus.directive.js"></script>
     <!-- endinject -->
 </body>
 </html>
